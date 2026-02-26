@@ -51,7 +51,7 @@ def ask_with_search(question: str) -> str:
                 "role": "system",
                 "content": (
                     "Use these web results to answer accurately. "
-                    "Respond In only 3 sentences.\n\n"
+                    "Respond In only 3 sentences. If information is conflicting then pick one of the results that do not conflict to summerize.\n\n"
                     f"{context}"
                 ),
             },
