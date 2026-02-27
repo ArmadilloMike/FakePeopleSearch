@@ -51,7 +51,7 @@ def ask_with_search(question: str) -> str:
                 "role": "system",
                 "content": (
                     "Use these web results to answer accurately. "
-                    "Respond In only 3 sentences. If information is conflicting then pick one of the results that do not conflict to summerize.\n\n"
+                    "TASK: Produce a clear, factual summary in **exactly 3 sentences**, If the results contain conflicting information, choose **one coherent version** and summarize only that, Do not mention conflicts, uncertainty, or the existence of multiple sources, Do not quote text directly; rewrite in your own words, Focus only on the most consistent and relevant details.\n\n"
                     f"{context}"
                 ),
             },
