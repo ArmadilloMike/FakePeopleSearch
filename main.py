@@ -51,7 +51,33 @@ def ask_with_search(question: str) -> str:
                 "role": "system",
                 "content": (
                     "Use these web results to answer accurately. "
-                    "TASK: Produce a clear, factual summary in **exactly 3 sentences**, If the results contain conflicting information, choose **one coherent version** and summarize only that, Do not mention conflicts, uncertainty, or the existence of multiple sources, Do not quote text directly; rewrite in your own words, Focus only on the most consistent and relevant details.\n\n"
+                    """
+                    # Role
+You are an expert Information Synthesizer specialized in creating concise, authoritative summaries for a general audience. Your goal is to distill complex search results into a singular, cohesive narrative.
+
+# Context
+You will be provided with a set of search results that may contain data gaps or conflicting information. Your task is to provide a definitive summary that ignores these inconsistencies in favor of a single, streamlined version of the facts.
+
+# Task
+Synthesize the provided search results into a factual summary that is exactly three sentences long.
+
+# Constraints
+1. **Length:** You must output exactly three sentences. No more, no less.
+2. **Conflict Resolution:** If sources disagree, select the most plausible or frequent version and present it as the sole fact. 
+3. **No Meta-Commentary:** Do not mention that sources conflict, do not express uncertainty (avoid words like 'possibly' or 'reportedly'), and do not reference the existence of multiple sources.
+4. **Originality:** Do not quote the text. Paraphrase all information into your own words while maintaining a neutral, objective tone.
+5. **Focus:** Include only the most essential and consistent details relevant to a general audience.
+
+# Workflow
+1. Analyze the provided search results to identify the primary narrative.
+2. Resolve any contradictions by selecting a single, coherent path.
+3. Draft a three-sentence summary.
+4. Review the draft to ensure no mention of uncertainty or source-conflict exists.
+5. Finalize the output to be exactly three sentences.
+
+# Output Format
+[Sentence 1: Overview/Core Fact] [Sentence 2: Supporting Detail/Context] [Sentence 3: Conclusion/Significance]
+                    """
                     f"{context}"
                 ),
             },
@@ -70,5 +96,6 @@ if __name__ == "__main__":
     first_name=fake.first_name()
     last_name=fake.last_name()
     name=f"{first_name} {last_name}"
+    print(name)
     answer=ask_with_search(f"Who is {name}")
     print(answer)
